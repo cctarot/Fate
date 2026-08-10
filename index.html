@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我和他還有沒完成的緣分嗎？ | 小C塔羅</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -14,247 +12,128 @@
             background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 50%, #fecdd3 100%);
             color: #4c0519;
             min-height: 100vh;
-            overflow-x: hidden;
-        }
-        .starfield {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .star {
-            position: absolute;
-            background: #fda4af;
-            border-radius: 50%;
-            animation: twinkle 3s infinite ease-in-out;
-        }
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.2); }
         }
         .glass-panel {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 228, 230, 0.8);
             box-shadow: 0 10px 30px rgba(225, 29, 72, 0.08);
         }
-        .glow-text {
-            text-shadow: 0 0 15px rgba(244, 63, 94, 0.25);
-        }
-        .tarot-card {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
-        }
-        .tarot-card:hover {
-            transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(225, 29, 72, 0.15);
-        }
-        .fade-in {
-            animation: fadeIn 0.4s ease-out forwards;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .tarot-card { transition: transform 0.4s; }
+        .tarot-card:hover { transform: translateY(-6px); }
     </style>
 </head>
-<body class="relative flex flex-col min-h-screen">
-
-    <!-- 粉色系星空背景 -->
-    <div class="starfield" id="starfield"></div>
-
-    <!-- 主要內容區 -->
-    <main class="relative z-10 flex-grow container mx-auto px-4 py-10 max-w-4xl flex flex-col items-center">
-        
-        <!-- 頭像與標題區 -->
-        <div class="text-center mb-10 fade-in">
-            <div class="inline-block p-1 rounded-full bg-gradient-to-r from-rose-400 to-pink-500 shadow-md mb-4">
-                <div class="w-24 h-24 rounded-full bg-white flex items-center justify-center overflow-hidden border-2 border-pink-100">
-                    <span class="text-3xl">🌸</span>
-                </div>
+<body class="flex flex-col min-h-screen">
+    <main class="flex-grow container mx-auto px-4 py-10 max-w-4xl flex flex-col items-center">
+        <div class="text-center mb-10">
+            <!-- 角色 LOGO -->
+            <div class="mb-4">
+                <img src="https://raw.githubusercontent.com/cctarot/missyou/main/public/logo.png" alt="小C塔羅" class="w-32 h-32 mx-auto rounded-full border-4 border-white shadow-lg">
             </div>
-            <h2 class="text-sm md:text-base font-semibold tracking-widest text-rose-700 mb-2">小C塔羅 | @cc_tarot_tw</h2>
-            <h1 class="text-2xl md:text-4xl font-bold tracking-wider glow-text text-rose-950">
-                我和他還有沒完成的緣分嗎？
-            </h1>
-            <p class="text-rose-800 text-xs md:text-sm mt-3 tracking-wide">
-                靜下心來，感受此刻的直覺，帶你找到答案
-            </p>
+            <h2 class="text-sm font-semibold text-rose-700 mb-2">小C塔羅 | @cc_tarot_tw</h2>
+            <h1 class="text-2xl md:text-4xl font-bold text-rose-950">我和他還有沒完成的緣分嗎？</h1>
         </div>
 
-        <!-- 牌卡選擇區 -->
         <div id="selection-view" class="w-full">
-            <p class="text-center text-rose-800 font-medium mb-6 tracking-wide text-sm md:text-base">👇 請憑直覺選擇下方其中一張牌</p>
-            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-                <!-- A組卡片 -->
-                <div onclick="selectGroup('A')" class="tarot-card glass-panel rounded-2xl p-6 cursor-pointer flex flex-col items-center text-center group border border-rose-200 hover:border-rose-400">
-                    <div class="w-20 h-32 rounded-lg bg-gradient-to-b from-rose-400 to-pink-600 flex items-center justify-center text-white shadow-md mb-4 group-hover:scale-105 transition-transform">
-                        <span class="text-2xl">✨</span>
-                    </div>
-                    <span class="text-xl font-bold text-rose-900 tracking-wider">✦ A 組 ✦</span>
-                    <span class="text-xs text-rose-600 mt-2">點擊查看解析</span>
+                <div onclick="selectGroup('A')" class="tarot-card glass-panel rounded-2xl p-6 cursor-pointer text-center border border-rose-200">
+                    <div class="w-20 h-32 bg-rose-400 mx-auto rounded-lg mb-4 flex items-center justify-center text-white text-2xl">✨</div>
+                    <span class="font-bold text-rose-900">✦ A 組 ✦</span>
                 </div>
-
-                <!-- B組卡片 -->
-                <div onclick="selectGroup('B')" class="tarot-card glass-panel rounded-2xl p-6 cursor-pointer flex flex-col items-center text-center group border border-rose-200 hover:border-rose-400">
-                    <div class="w-20 h-32 rounded-lg bg-gradient-to-b from-rose-400 to-pink-600 flex items-center justify-center text-white shadow-md mb-4 group-hover:scale-105 transition-transform">
-                        <span class="text-2xl">🔮</span>
-                    </div>
-                    <span class="text-xl font-bold text-rose-900 tracking-wider">✦ B 組 ✦</span>
-                    <span class="text-xs text-rose-600 mt-2">點擊查看解析</span>
+                <div onclick="selectGroup('B')" class="tarot-card glass-panel rounded-2xl p-6 cursor-pointer text-center border border-rose-200">
+                    <div class="w-20 h-32 bg-rose-400 mx-auto rounded-lg mb-4 flex items-center justify-center text-white text-2xl">🔮</div>
+                    <span class="font-bold text-rose-900">✦ B 組 ✦</span>
                 </div>
-
-                <!-- C組卡片 -->
-                <div onclick="selectGroup('C')" class="tarot-card glass-panel rounded-2xl p-6 cursor-pointer flex flex-col items-center text-center group border border-rose-200 hover:border-rose-400">
-                    <div class="w-20 h-32 rounded-lg bg-gradient-to-b from-rose-400 to-pink-600 flex items-center justify-center text-white shadow-md mb-4 group-hover:scale-105 transition-transform">
-                        <span class="text-2xl">💫</span>
-                    </div>
-                    <span class="text-xl font-bold text-rose-900 tracking-wider">✦ C 組 ✦</span>
-                    <span class="text-xs text-rose-600 mt-2">點擊查看解析</span>
+                <div onclick="selectGroup('C')" class="tarot-card glass-panel rounded-2xl p-6 cursor-pointer text-center border border-rose-200">
+                    <div class="w-20 h-32 bg-rose-400 mx-auto rounded-lg mb-4 flex items-center justify-center text-white text-2xl">💫</div>
+                    <span class="font-bold text-rose-900">✦ C 組 ✦</span>
                 </div>
             </div>
         </div>
 
-        <!-- 內容解析呈現區 (預設隱藏) -->
-        <div id="result-view" class="w-full hidden fade-in max-w-3xl mx-auto">
-            <div class="glass-panel rounded-2xl p-6 md:p-10 shadow-xl relative border border-rose-200">
-                <!-- 返回按鈕 -->
-                <button onclick="goBack()" class="mb-6 inline-flex items-center text-sm font-semibold text-rose-700 hover:text-rose-900 bg-rose-100/80 hover:bg-rose-200 px-4 py-2 rounded-full transition-colors">
-                    ← 選擇其他牌組
-                </button>
-
-                <!-- 動態生成的解析標題與內文 -->
-                <h2 id="result-title" class="text-xl md:text-2xl font-bold text-rose-950 mb-6 text-center border-b border-rose-200 pb-4"></h2>
-                
-                <div id="result-content" class="space-y-6 text-rose-950 leading-relaxed text-sm md:text-base">
-                    <!-- 內容會透過 JavaScript 帶入 -->
-                </div>
-
-                <!-- 底部再次返回按鈕 -->
+        <div id="result-view" class="w-full hidden max-w-3xl mx-auto">
+            <div class="glass-panel rounded-2xl p-8 border border-rose-200">
+                <button onclick="goBack()" class="mb-4 text-rose-700 underline">← 返回選擇</button>
+                <h2 id="result-title" class="text-xl font-bold mb-4 text-center"></h2>
+                <div id="result-content" class="text-rose-950 space-y-4"></div>
+                <!-- LINE 按鈕 -->
                 <div class="mt-8 text-center">
-                    <button onclick="goBack()" class="bg-rose-600 hover:bg-rose-700 text-white font-semibold px-6 py-2.5 rounded-full shadow-md transition-all">
-                        看其他牌組解析
-                    </button>
+                    <a href="https://line.me/R/ti/p/040soped" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all">
+                        💬 點擊諮詢小C塔羅 (LINE)
+                    </a>
                 </div>
             </div>
         </div>
-
     </main>
-
-    <!-- 頁尾 -->
-    <footer class="relative z-10 text-center py-6 text-xs text-rose-800 tracking-wider border-t border-rose-200/60 mt-10">
-        小C塔羅 | @cc_tarot_tw
-    </footer>
-
-    <!-- JavaScript 互動邏輯 -->
+    <footer class="text-center py-6 text-rose-800 text-xs">小C塔羅 | @cc_tarot_tw</footer>
     <script>
-        // 生成粉色系星空背景
-        const starfield = document.getElementById('starfield');
-        const starCount = 35;
-        for (let i = 0; i < starCount; i++) {
-            const star = document.createElement('div');
-            star.classList.add('star');
-            const size = Math.random() * 3 + 1;
-            star.style.width = `${size}px`;
-            star.style.height = `${size}px`;
-            star.style.top = `${Math.random() * 100}%`;
-            star.style.left = `${Math.random() * 100}%`;
-            star.style.animationDelay = `${Math.random() * 3}s`;
-            starfield.appendChild(star);
-        }
-
-        // 內容資料庫
         const tarotData = {
-            'A': {
-                title: '✦ A組解析 ✦',
+            'A': { 
+                title: '✦ A組解析 ✦', 
                 content: `
-                    <div class="space-y-6">
-                        <div>
-                            <h3 class="font-bold text-base md:text-lg text-rose-800 mb-2">1. 從並肩作戰到沉默冷場</h3>
-                            <p>你們過去的關係非常緊密，就像是並肩作戰的夥伴，在生活與工作上能夠相輔相成、互相協助，緣分基礎深厚。然而，成為親密關係後，你們開始察覺彼此有些想法上的差異，卻因為太了解對方，反而覺得「溝通」成了最困難的事，導致雙方選擇沉默，進而讓關係逐漸冷場、轉淡。</p>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-base md:text-lg text-rose-800 mb-2">2. 「介入者」與隱性的內耗</h3>
-                            <p>這段感情中存在著某種「第三者」，但不一定是實質的小三，更有可能是一場突發事件、或是某個外在契機介入了你們的關係，成為阻礙前行的絆腳石。因為有一方過於單純地看待問題而導致吃虧，或是雙方在包容過程中產生了過度的「內耗」與負能量，且對方似乎一直不願意開誠布公地溝通，使得問題懸而未決。</p>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-base md:text-lg text-rose-800 mb-2">3. 指引與結論：各自圓滿，未必糾結於在一起</h3>
-                            <p class="mb-2"><strong>如果你們還有聯絡：</strong> 若雙方仍有互動與關心，那麼緣分是有機會重新開啟的，但前提是必須突破「不願溝通」的僵局。</p>
-                            <p class="mb-2"><strong>如果你們已無聯繫：</strong> 指引牌顯示，你們各自在沒有對方之後，生活反而顯得更加和諧與圓滿。你們都具備讓自己過得很好的能力，而這份關係的真正意義，在於它是你們人生中的「指路標」，陪伴彼此成長。</p>
-                            <p><strong>最終建議：</strong> 脫離這段曾帶有束縛感的感情後，你們正迎向光亮。如果無法解決溝通問題，試著將對方視為人生中不可或缺的貴人，感謝彼此帶來的成長，讓事情圓滿落幕。未來的生活會過得很美好，將這份緣分昇華為美好的回憶，或許就是對雙方最好的結局。</p>
-                        </div>
+                    <div>
+                        <h3 class="font-bold text-base text-rose-800 mb-1">1. 從並肩作戰到沉默冷場</h3>
+                        <p>你們過去的關係非常緊密，就像是並肩作戰的夥伴，在生活與工作上能夠相輔相成、互相協助，緣分基礎深厚。然而，成為親密關係後，你們開始察覺彼此有些想法上的差異，卻因為太了解對方，反而覺得「溝通」成了最困難的事，導致雙方選擇沉默，進而讓關係逐漸冷場、轉淡。</p>
                     </div>
-                `
+                    <div>
+                        <h3 class="font-bold text-base text-rose-800 mb-1">2. 「介入者」與隱性的內耗</h3>
+                        <p>這段感情中存在著某種「第三者」，但不一定是實質的小三，更有可能是一場突發事件、或是某個外在契機介入了你們的關係，成為阻礙前行的絆腳石。因為有一方過於單純地看待問題而導致吃虧，或是雙方在包容過程中產生了過度的「內耗」與負能量，且對方似乎一直不願意開誠布公地溝通，使得問題懸而未決。</p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base text-rose-800 mb-1">3. 指引與結論：各自圓滿，未必糾結於在一起</h3>
+                        <p class="mb-1"><strong>如果你們還有聯絡：</strong>若雙方仍有互動與關心，那麼緣分是有機會重新開啟的，但前提是必須突破「不願溝通」的僵局。</p>
+                        <p class="mb-1"><strong>如果你們已無聯繫：</strong>指引牌顯示，你們各自在沒有對方之後，生活反而顯得更加和諧與圓滿。你們都具備讓自己過得很好的能力，而這份關係的真正意義，在於它是你們人生中的「指路標」，陪伴彼此成長。</p>
+                        <p><strong>最終建議：</strong>脫離這段曾帶有束縛感的感情後，你們正迎向光亮。如果無法解決溝通問題，試著將對方視為人生中不可或缺的貴人，感謝彼此帶來的成長，讓事情圓滿落幕。未來的生活會過得很美好，將這份緣分昇華為美好的回憶，或許就是對雙方最好的結局。</p>
+                    </div>
+                ` 
             },
-            'B': {
-                title: '✦ B組解析 ✦',
+            'B': { 
+                title: '✦ B組解析 ✦', 
                 content: `
-                    <div class="space-y-6">
-                        <div>
-                            <h3 class="font-bold text-base md:text-lg text-rose-800 mb-2">1. 緣分深厚且圓滿，將偏愛留給彼此</h3>
-                            <p>抽到 B 組的朋友們非常幸運，你們之間的緣分不僅沒有斷掉，還呈現相當圓滿的狀態。對方的慷慨與大方雖然對大家都很好，但他懂得拿捏界線，並把真正的「偏愛」獨獨留給你。雙方在社交與資源上也能互相支援、並肩作戰，甚至已經見過雙方家長且獲得長輩的滿意與支持，感情基礎相當穩固。</p>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-base md:text-lg text-rose-800 mb-2">2. 未完成的緣分：過於理性與拉不下臉的考驗</h3>
-                            <p>既然各方面都很好，為什麼還會有「未完成的緣分」呢？指引牌指出，當面臨重大事件或需要做長遠規劃（例如步入婚姻）時，有一方可能會瞬間變得非常理性、謹慎，甚至讓人感覺有些抽離、抓不住真實情緒。 此外，雙方在某些時候可能會因為「拉不下臉」而卡住。如果你們目前處於失聯或分開的狀態，雖然當初分開的理由在當時無法改變，但隨著雙方各自成長，未來是有很高機率可以再次續緣的。</p>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-base md:text-lg text-rose-800 mb-2">3. 塔羅指引：學會接納感情中的小瑕疵</h3>
-                            <p>指引牌提醒你，這段關係的起點到終點都很不錯，但你必須允許感情裡存在一些小瑕疵。不需要追求百分之百的完美，學會包容對方在關鍵時刻的過度理性與木訥，並放下偶爾的硬脾氣。無論是正在穩穩交往、準備邁向下個階段，或是曾經分開如今各自成長，你們之間那份深刻的緣分都依然閃閃發光，只要願意溝通與包容，美好結局絕對值得期待！</p>
-                        </div>
+                    <div>
+                        <h3 class="font-bold text-base text-rose-800 mb-1">1. 緣分深厚且圓滿，將偏愛留給彼此</h3>
+                        <p>抽到 B 組的朋友們非常幸運，你們之間的緣分不僅沒有斷掉，還呈現相當圓滿的狀態。對方的慷慨與大方雖然對大家都很好，但他懂得拿捏界線，並把真正的「偏愛」獨獨留給你。雙方在社交與資源上也能互相支援、並肩作戰，甚至已經見過雙方家長且獲得長輩的滿意與支持，感情基礎相當穩固。</p>
                     </div>
-                `
+                    <div>
+                        <h3 class="font-bold text-base text-rose-800 mb-1">2. 未完成的緣分：過於理性與拉不下臉的考驗</h3>
+                        <p>既然各方面都很好，為什麼還會有「未完成的緣分」呢？指引牌指出，當面臨重大事件或需要做長遠規劃（例如步入婚姻）時，有一方可能會瞬間變得非常理性、謹慎，甚至讓人感覺有些抽離、抓不住真實情緒。此外，雙方在某些時候可能會因為「拉不下臉」而卡住。如果你們目前處於失聯或分開的狀態，雖然當初分開的理由在當時無法改變，但隨著雙方各自成長，未來是有很高機率可以再次續緣的。</p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base text-rose-800 mb-1">3. 塔羅指引：學會接納感情中的小瑕疵</h3>
+                        <p>指引牌提醒你，這段關係的起點到終點都很不錯，但你必須允許感情裡存在一些小瑕疵。不需要追求百分之百的完美，學會包容對方在關鍵時刻的過度理性與木訥，並放下偶爾的硬脾氣。無論是正在穩穩交往、準備邁向下個階段，或是曾經分開如今各自成長，你們之間那份深刻的緣分都依然閃閃發光，只要願意溝通與包容，美好結局絕對值得期待！</p>
+                    </div>
+                ` 
             },
-            'C': {
-                title: '✦ C組解析 ✦',
+            'C': { 
+                title: '✦ C組解析 ✦', 
                 content: `
-                    <div class="space-y-6">
-                        <div>
-                            <h3 class="font-bold text-base md:text-lg text-rose-800 mb-2">1. 努力已到極限，緣分已走到盡頭</h3>
-                            <p>抽到 C 組的朋友，你們之間的緣分已經來到了終點。這段感情你們都曾非常努力過，但也因此感到精疲力竭。即便透過塔羅牌、占卜或合八字等方式尋求解答，也無法改變已經發生的事實。你們不得不分開，這份無法繼續的失落與不甘心，往往伴隨著極高的情緒拉扯，讓人難以接受。</p>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-base md:text-lg text-rose-800 mb-2">2. 欺騙與貪心毀掉了過往的努力</h3>
-                            <p>牌面顯示，這段關係中可能存在著欺騙、一時的糊塗或貪心，徹底摧毀了你們累積的信任。如果當初是因為這些原因而分開，這段感情真的沒有必要再去挽回或糾纏。因為如果你選擇回到這段關係裡，很可能會再次經歷當初的心碎與傷痛。</p>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-base md:text-lg text-rose-800 mb-2">3. 塔羅指引：緣分已盡，別再勉強失去自我</h3>
-                            <p>指引牌明白告訴你：你們之間已經沒有未竟的緣分，也沒有空間朝同一個目標前進了。 過去的努力已經消耗了你們大量的時間、精力，甚至讓你失去了原本的原則與自我。雖然心裡可能還有一絲糾結，但牌面給出的忠告是：「你們雖然有緣分，但我建議你不要繼續。」 放過彼此、停止內耗，別讓過度的執著成為折磨自己的枷鎖。</p>
-                        </div>
+                    <div>
+                        <h3 class="font-bold text-base text-rose-800 mb-1">1. 努力已到極限，緣分已走到盡頭</h3>
+                        <p>抽到 C 組的朋友，你們之間的緣分已經來到了終點。這段感情你們都曾非常努力過，但也因此感到精疲力竭。即便透過塔羅牌、占卜或合八字等方式尋求解答，也無法改變已經發生的事實。你們不得不分開，這份無法繼續的失落與不甘心，往往伴隨著極高的情緒拉扯，讓人難以接受。</p>
                     </div>
-                `
+                    <div>
+                        <h3 class="font-bold text-base text-rose-800 mb-1">2. 欺騙與貪心毀掉了過往的努力</h3>
+                        <p>牌面顯示，這段關係中可能存在著欺騙、一時的糊塗或貪心，徹底摧毀了你們累積的信任。如果當初是因為這些原因而分開，這段感情真的沒有必要再去挽回或糾纏。因為如果你選擇回到這段關係裡，很可能會再次經歷當初的心碎與傷痛。</p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base text-rose-800 mb-1">3. 塔羅指引：緣分已盡，別再勉強失去自我</h3>
+                        <p>指引牌明白告訴你：你們之間已經沒有未竟的緣分，也沒有空間朝同一個目標前進了。過去的努力已經消耗了你們大量的時間、精力，甚至讓你失去了原本的原則與自我。雖然心裡可能還有一絲糾結，但牌面給出的忠告是：「你們雖然有緣分，但我建議你不要繼續。」放過彼此、停止內耗，別讓過度的執著成為折磨自己的枷鎖。</p>
+                    </div>
+                ` 
             }
         };
 
-        function selectGroup(groupKey) {
-            const selectionView = document.getElementById('selection-view');
-            const resultView = document.getElementById('result-view');
-            const resultTitle = document.getElementById('result-title');
-            const resultContent = document.getElementById('result-content');
-
-            // 填入對應資料
-            resultTitle.innerText = tarotData[groupKey].title;
-            resultContent.innerHTML = tarotData[groupKey].content;
-
-            // 切換視圖
-            selectionView.classList.add('hidden');
-            resultView.classList.remove('hidden');
-
-            // 捲動至頂部
+        function selectGroup(key) {
+            document.getElementById('selection-view').classList.add('hidden');
+            document.getElementById('result-view').classList.remove('hidden');
+            document.getElementById('result-title').innerText = tarotData[key].title;
+            document.getElementById('result-content').innerHTML = tarotData[key].content;
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function goBack() {
-            const selectionView = document.getElementById('selection-view');
-            const resultView = document.getElementById('result-view');
-
-            resultView.classList.add('hidden');
-            selectionView.classList.remove('hidden');
-
+            document.getElementById('selection-view').classList.remove('hidden');
+            document.getElementById('result-view').classList.add('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
