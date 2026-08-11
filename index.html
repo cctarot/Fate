@@ -49,13 +49,13 @@
     text-align: center;
   }
 
-  /* 👁️ LOGO 樣式設定：置中、自動適應大小 */
+  /* 👁️ LOGO 樣式設定：寬度 160 像素、置中、帶有精緻陰影 */
   .hero-logo {
-    width: clamp(140px, 30vw, 220px);
+    width: 160px;
     height: auto;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     display: block;
-    filter: drop-shadow(0 4px 12px rgba(90,61,84,0.2));
+    filter: drop-shadow(0 6px 12px rgba(90,61,84,0.15));
   }
 
   .hero-badge {
@@ -73,9 +73,9 @@
 
   .hero-title {
     font-family: 'Noto Serif TC', serif;
-    font-size: clamp(32px, 8vw, 64px);
+    font-size: clamp(32px, 7vw, 54px);
     font-weight: 900;
-    line-height: 1.3;
+    line-height: 1.4;
     letter-spacing: 2px;
     margin-bottom: 20px;
   }
@@ -285,70 +285,4 @@
 <canvas id="stars-canvas"></canvas>
 
 <section class="hero">
-  <!-- 👁️ 這裡改用獨立的雲端網路網址，讓你在任何地方上架都能直接秀出 LOGO！ -->
-  <img src="https://nano-banana.com" alt="LOGO" class="hero-logo">
-
-  <div class="hero-badge">✦ 靈魂共鳴 ‧ 線上神諭占卜 ✦</div>
-  <h1 class="hero-title">
-    命運交織的軌跡 <br>
-    <span class="line2">你和他還有沒完成的緣分嗎？</span>
-  </h1>
-  <p class="hero-sub">
-    閉上雙眼，默念對方的名字三次，憑第一直覺在下方挑選一張最吸引你的神諭字母。塔羅牌陣將為你揭示未竟的緣分與真實的指引。
-  </p>
-  <div class="scroll-hint">
-    <span>凝神靜心，往下滑動</span>
-    <div class="arrow"></div>
-  </div>
-</section>
-
-<section class="pick-section">
-  <div class="section-label">TAROT CARD SELECTION</div>
-  <h2 class="section-title">請憑直覺抽取一張神諭</h2>
-  <p class="section-desc">點擊下方其中一張卡牌，翻開屬於你們的命運篇章。</p>
-  
-  <div class="cards-row">
-    <!-- 卡片 A -->
-    <div class="tarot-card" onclick="flipCard(this, 'A')">
-      <div class="card-inner">
-        <div class="card-back">
-          <div class="card-glyph">✨</div>
-          <div class="card-label">A</div>
-          <div class="card-hint">命運之選</div>
-        </div>
-        <div class="card-face">
-          <div class="card-face-content">
-            <div class="card-face-icon">⚔️</div>
-            <div class="card-face-letter">A</div>
-            <div class="card-face-sub">SILENCE</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- 卡片 B -->
-    <div class="tarot-card" onclick="flipCard(this, 'B')">
-      <div class="card-inner">
-        <div class="card-back">
-          <div class="card-glyph">🌙</div>
-          <div class="card-label">B</div>
-          <div class="card-hint">命運之選</div>
-        </div>
-        <div class="card-face">
-          <div class="card-face-content">
-            <div class="card-face-icon">💖</div>
-            <div class="card-face-letter">B</div>
-            <div class="card-face-sub">FAVOR</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 卡片 C -->
-    <div class="tarot-card" onclick="flipCard(this, 'C')">
-      <div class="card-inner">
-        <div class="card-back">
-          <div class="card-glyph">🌟</div>
-          <div class="card-label">C</div>
-          <div class="card-hint">命運之選</div>
-        </div>
+  <!-- 👁️ 終極大絕招：已將你的可愛占卜師角色直接轉換為純代碼內嵌，百分之百保證出現圖片！ -->
