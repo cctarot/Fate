@@ -7,18 +7,18 @@
 <style>
   @import url('https://googleapis.com');
 
-  /* 🎨 這裡已為你更換為浪漫溫柔的粉色系底色 */
+  /* 🎨 粉色系底色設定 */
   :root {
-    --bg1:        #fff0f5; /* 薰衣草 blush 粉 */
-    --bg2:        #ffd1dc; /* 櫻花浪漫粉 */
-    --bg3:        #fbcce7; /* 藕荷粉紫 */
-    --ink:        #5a3d54; /* 深莓果紫文字 */
-    --ink-soft:   #926e88; /* 柔和粉紫文字 */
-    --amber:      #b55d75; /* 玫瑰木紅 */
-    --amber-l:    #d9748f; /* 甜美粉紅 */
-    --gold:       #e0a96d; /* 晨曦金 */
-    --gold-l:     #f7d6b5; /* 柔光金 */
-    --lilac:      #e6b8d2; /* 丁香粉 */
+    --bg1:        #fff0f5; 
+    --bg2:        #ffd1dc; 
+    --bg3:        #fbcce7; 
+    --ink:        #5a3d54; 
+    --ink-soft:   #926e88; 
+    --amber:      #b55d75; 
+    --amber-l:    #d9748f; 
+    --gold:       #e0a96d; 
+    --gold-l:     #f7d6b5; 
+    --lilac:      #e6b8d2; 
     --white:      #ffffff;
   }
 
@@ -45,8 +45,17 @@
     min-height: 100vh;
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
-    padding: 60px 24px 40px;
+    padding: 40px 24px 40px;
     text-align: center;
+  }
+
+  /* 👁️ LOGO 樣式設定：置中、自動適應大小 */
+  .hero-logo {
+    width: clamp(120px, 25vw, 180px);
+    height: auto;
+    margin-bottom: 15px;
+    display: block;
+    filter: drop-shadow(0 4px 10px rgba(90,61,84,0.15));
   }
 
   .hero-badge {
@@ -59,7 +68,7 @@
     font-size: 14px;
     letter-spacing: 3px;
     color: var(--ink-soft);
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
 
   .hero-title {
@@ -276,10 +285,12 @@
 <canvas id="stars-canvas"></canvas>
 
 <section class="hero">
+  <!-- 👁️ 這裡已幫你加上置中頂部的 LOGO 角色圖片代碼 -->
+  <img src="logo.png" alt="LOGO" class="hero-logo">
+
   <div class="hero-badge">✦ 靈魂共鳴 ‧ 線上神諭占卜 ✦</div>
   <h1 class="hero-title">
     命運交織的軌跡 <br>
-    <!-- ✍️ 主標題已修改為你的新標題 -->
     <span class="line2">你和他還有沒完成的緣分嗎？</span>
   </h1>
   <p class="hero-sub">
@@ -297,7 +308,7 @@
   <p class="section-desc">點擊下方其中一張卡牌，翻開屬於你們的命運篇章。</p>
   
   <div class="cards-row">
-    <!-- 卡片 A：已換上對應圖示 ⚔️ (並肩與衝突) -->
+    <!-- 卡片 A：⚔️ -->
     <div class="tarot-card" onclick="flipCard(this, 'A')">
       <div class="card-inner">
         <div class="card-back">
@@ -315,7 +326,7 @@
       </div>
     </div>
     
-    <!-- 卡片 B：已換上對應圖示 💖 (偏愛與圓滿) -->
+    <!-- 卡片 B：💖 -->
     <div class="tarot-card" onclick="flipCard(this, 'B')">
       <div class="card-inner">
         <div class="card-back">
@@ -333,7 +344,7 @@
       </div>
     </div>
 
-    <!-- 卡片 C：已換上對應圖示 ⏳ (極限與盡頭) -->
+    <!-- 卡片 C：⏳ -->
     <div class="tarot-card" onclick="flipCard(this, 'C')">
       <div class="card-inner">
         <div class="card-back">
@@ -343,5 +354,3 @@
         </div>
         <div class="card-face">
           <div class="card-face-content">
-            <div class="card-face-icon">⏳</div>
-            <div class="card-face-letter">C</div>
